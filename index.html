@@ -1,111 +1,416 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Cássio Ensina</title>
 
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
+      padding: 0;
+    }
+
+    body {
       font-family: Arial, sans-serif;
-      background: #f5f7fb;
-      color: #222;
+      background: #f6f8fc;
+      color: #172033;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
     }
 
     header {
-      background: #1f4f8f;
-      color: white;
-      padding: 30px 20px;
-      text-align: center;
+      height: 74px;
+      background: rgba(255,255,255,.95);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 7%;
+      border-bottom: 1px solid #e6eaf0;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(12px);
     }
 
-    header h1 {
-      margin: 0;
+    .logo {
+      font-weight: 800;
+      font-size: 24px;
+      color: #173b75;
+    }
+
+    nav {
+      display: flex;
+      gap: 26px;
+      align-items: center;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      color: #2467c7;
+    }
+
+    .private-button {
+      padding: 11px 18px;
+      border-radius: 12px;
+      background: #173b75;
+      color: white;
+    }
+
+    .hero {
+      min-height: 520px;
+      padding: 100px 7%;
+      background:
+        radial-gradient(circle at 75% 20%, rgba(83,160,255,.45), transparent 30%),
+        linear-gradient(135deg, #0d2447, #173b75, #1769aa);
+      color: white;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-content {
+      max-width: 780px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(255,255,255,.13);
+      border: 1px solid rgba(255,255,255,.18);
+      padding: 8px 12px;
+      border-radius: 999px;
+      margin-bottom: 22px;
+      font-size: 13px;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: 1;
+      margin-bottom: 24px;
+      letter-spacing: -2px;
+    }
+
+    .hero p {
+      max-width: 650px;
+      line-height: 1.7;
+      font-size: 19px;
+      color: #dbe8ff;
+      margin-bottom: 32px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .primary,
+    .secondary {
+      padding: 14px 22px;
+      border-radius: 12px;
+      font-weight: 700;
+    }
+
+    .primary {
+      background: white;
+      color: #173b75;
+    }
+
+    .secondary {
+      border: 1px solid rgba(255,255,255,.35);
+      color: white;
+      background: rgba(255,255,255,.08);
+    }
+
+    .section {
+      max-width: 1180px;
+      margin: auto;
+      padding: 80px 25px;
+    }
+
+    .section-title {
+      margin-bottom: 36px;
+    }
+
+    .section-title small {
+      color: #276ac7;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .section-title h2 {
+      margin-top: 8px;
       font-size: 36px;
     }
 
-    header p {
-      margin-top: 8px;
-      opacity: 0.9;
+    .section-title p {
+      margin-top: 10px;
+      max-width: 680px;
+      line-height: 1.6;
+      color: #657086;
     }
 
-    main {
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-
-    .grid {
+    .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
       gap: 20px;
     }
 
     .card {
       background: white;
-      padding: 25px;
-      border-radius: 14px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-      text-decoration: none;
-      color: #222;
-      transition: 0.2s;
+      border: 1px solid #e7ebf1;
+      border-radius: 20px;
+      padding: 28px;
+      min-height: 220px;
+      box-shadow: 0 12px 35px rgba(32,52,80,.06);
+      transition: .25s;
     }
 
     .card:hover {
-      transform: translateY(-4px);
+      transform: translateY(-5px);
+      box-shadow: 0 18px 45px rgba(32,52,80,.12);
+      border-color: #b8cff0;
     }
 
-    .card h2 {
-      margin-top: 0;
+    .icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      background: #eef5ff;
+      margin-bottom: 22px;
+    }
+
+    .card h3 {
+      font-size: 21px;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      line-height: 1.55;
+      color: #657086;
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+
+    .card span {
+      color: #2166c2;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .private-area {
+      margin-top: 40px;
+      background: #0e213f;
+      color: white;
+      border-radius: 28px;
+      padding: 42px;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .private-area h2 {
+      font-size: 32px;
+      margin-bottom: 14px;
+    }
+
+    .private-area p {
+      color: #c8d7ed;
+      line-height: 1.6;
+      max-width: 620px;
+    }
+
+    .private-area .button-wrap {
+      text-align: right;
+    }
+
+    .private-area a {
+      display: inline-block;
+      background: white;
+      color: #173b75;
+      font-weight: 800;
+      padding: 15px 23px;
+      border-radius: 12px;
     }
 
     footer {
       text-align: center;
-      padding: 30px;
-      color: #666;
+      padding: 45px;
+      border-top: 1px solid #e5e9ef;
+      color: #737e91;
+      background: white;
+    }
+
+    @media(max-width: 760px) {
+      header {
+        padding: 0 20px;
+      }
+
+      nav a:not(.private-button) {
+        display: none;
+      }
+
+      .hero {
+        padding: 80px 25px;
+      }
+
+      .private-area {
+        grid-template-columns: 1fr;
+      }
+
+      .private-area .button-wrap {
+        text-align: left;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <header>
-    <h1>Cássio Ensina</h1>
-    <p>Materiais, aplicativos e recursos educacionais</p>
-  </header>
+<header>
+  <a href="/" class="logo">Cássio Ensina</a>
 
-  <main>
+  <nav>
+    <a href="#explorar">Explorar</a>
+    <a href="#sobre">Sobre</a>
+    <a href="/login.html" class="private-button">🔐 Área do Professor</a>
+  </nav>
+</header>
 
-    <div class="grid">
+<section class="hero">
+  <div class="hero-content">
 
-      <a href="#" class="card">
-        <h2>📚 Materiais</h2>
-        <p>Atividades, avaliações, PDFs e planilhas.</p>
-      </a>
-
-      <a href="#" class="card">
-        <h2>🎮 Aplicativos</h2>
-        <p>Ferramentas e aplicativos educacionais.</p>
-      </a>
-
-      <a href="#" class="card">
-        <h2>🧪 Projetos</h2>
-        <p>Feiras de ciências, projetos e experiências.</p>
-      </a>
-
-      <a href="#" class="card">
-        <h2>👨‍🏫 Sobre</h2>
-        <p>Conheça o professor Cássio e o projeto.</p>
-      </a>
-
+    <div class="badge">
+      Matemática • Tecnologia • Educação
     </div>
 
-  </main>
+    <h1>
+      Aprender.<br>
+      Experimentar.<br>
+      Criar.
+    </h1>
 
-  <footer>
-    © 2026 Cássio Ensina
-  </footer>
+    <p>
+      Materiais, aplicativos e projetos desenvolvidos para transformar
+      conteúdos escolares em experiências de aprendizagem mais práticas,
+      visuais e interativas.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#explorar" class="primary">Explorar recursos</a>
+      <a href="#sobre" class="secondary">Conheça o projeto</a>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="explorar">
+
+  <div class="section-title">
+    <small>Explore</small>
+    <h2>Um portal para aprender e ensinar</h2>
+    <p>
+      Navegue pelos diferentes ambientes do Cássio Ensina e encontre
+      ferramentas, materiais e projetos para usar dentro e fora da sala de aula.
+    </p>
+  </div>
+
+  <div class="cards">
+
+    <a href="/aplicativos.html" class="card">
+      <div class="icon">🧰</div>
+      <h3>Aplicativos</h3>
+      <p>
+        Simuladores, jogos, ferramentas educacionais e aplicativos interativos.
+      </p>
+      <span>Explorar aplicativos →</span>
+    </a>
+
+    <a href="/projetos.html" class="card">
+      <div class="icon">🧪</div>
+      <h3>Projetos</h3>
+      <p>
+        Projetos escolares, feiras de ciências, experimentos e experiências práticas.
+      </p>
+      <span>Ver projetos →</span>
+    </a>
+
+    <a href="/midia.html" class="card">
+      <div class="icon">🎥</div>
+      <h3>Mídia</h3>
+      <p>
+        Vídeos, imagens, apresentações, registros e conteúdos multimídia.
+      </p>
+      <span>Acessar mídia →</span>
+    </a>
+
+    <a href="/olimpiadas.html" class="card">
+      <div class="icon">🏅</div>
+      <h3>Olimpíadas de Matemática</h3>
+      <p>
+        Problemas, desafios, materiais de treinamento e conteúdos olímpicos.
+      </p>
+      <span>Explorar olimpíadas →</span>
+    </a>
+
+    <a href="/materiais.html" class="card">
+      <div class="icon">📚</div>
+      <h3>Materiais e arquivos</h3>
+      <p>
+        Atividades, avaliações, PDFs, planilhas e recursos para professores e alunos.
+      </p>
+      <span>Acessar biblioteca →</span>
+    </a>
+
+  </div>
+
+  <div class="private-area">
+
+    <div>
+      <h2>Central do Professor</h2>
+
+      <p>
+        Um ambiente privado para organizar arquivos, acessar aplicativos pessoais,
+        reunir materiais de trabalho e gerenciar recursos usados no dia a dia.
+      </p>
+    </div>
+
+    <div class="button-wrap">
+      <a href="/login.html">Entrar na área privada →</a>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="section" id="sobre">
+
+  <div class="section-title">
+    <small>Sobre</small>
+    <h2>Cássio Ensina</h2>
+
+    <p>
+      O Cássio Ensina é um portal independente criado para reunir educação,
+      tecnologia e prática pedagógica em um único ambiente.
+    </p>
+  </div>
+
+</section>
+
+<footer>
+  © 2026 Cássio Ensina • cassioensina.com.br
+</footer>
 
 </body>
 </html>
