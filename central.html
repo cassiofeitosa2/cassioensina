@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Central do Professor | Cássio Ensina</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #1e293b;
+    }
+
+    .layout {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 250px 1fr;
+    }
+
+    aside {
+      background: #10284d;
+      color: white;
+      padding: 28px 20px;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 35px;
+    }
+
+    .menu {
+      display: grid;
+      gap: 10px;
+    }
+
+    .menu a {
+      color: #d9e5f7;
+      text-decoration: none;
+      padding: 12px 14px;
+      border-radius: 10px;
+      font-weight: 600;
+    }
+
+    .menu a:hover {
+      background: rgba(255,255,255,.1);
+      color: white;
+    }
+
+    main {
+      padding: 38px;
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+
+    .top h1 {
+      font-size: 34px;
+    }
+
+    .top p {
+      color: #657086;
+      margin-top: 6px;
+    }
+
+    .search {
+      width: 330px;
+      max-width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #dce2eb;
+      border-radius: 12px;
+      background: white;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(210px,1fr));
+      gap: 18px;
+      margin-bottom: 34px;
+    }
+
+    .card {
+      background: white;
+      padding: 22px;
+      border-radius: 18px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 8px 24px rgba(15,23,42,.05);
+    }
+
+    .card .icon {
+      font-size: 26px;
+      margin-bottom: 14px;
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: #657086;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .section-title {
+      font-size: 22px;
+      margin: 30px 0 16px;
+    }
+
+    .list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .item {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .item strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .item span {
+      color: #7a8497;
+      font-size: 13px;
+    }
+
+    .badge {
+      font-size: 12px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: #eef5ff;
+      color: #2868bb;
+      font-weight: 700;
+    }
+
+    @media(max-width: 800px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      aside {
+        display: none;
+      }
+
+      main {
+        padding: 24px;
+      }
+
+      .top {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .search {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="layout">
+
+  <aside>
+    <div class="logo">Cássio Ensina</div>
+
+    <div class="menu">
+      <a href="#">🏠 Início</a>
+      <a href="#">📁 Arquivos</a>
+      <a href="#">🧰 Meus Apps</a>
+      <a href="#">⭐ Favoritos</a>
+      <a href="#">🕘 Recentes</a>
+      <a href="#">📥 Caixa de entrada</a>
+      <a href="#">🤖 Ferramentas com IA</a>
+      <a href="/">🌐 Site público</a>
+    </div>
+  </aside>
+
+  <main>
+
+    <div class="top">
+      <div>
+        <h1>Central do Professor</h1>
+        <p>Organize seus materiais, aplicativos e recursos em um só lugar.</p>
+      </div>
+
+      <input class="search" type="text" placeholder="Pesquisar em tudo...">
+    </div>
+
+    <div class="grid">
+
+      <div class="card">
+        <div class="icon">📁</div>
+        <h3>Arquivos</h3>
+        <p>PDFs, planilhas, documentos, imagens e outros materiais.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🧰</div>
+        <h3>Meus Apps</h3>
+        <p>Aplicativos HTML públicos e privados.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">⭐</div>
+        <h3>Favoritos</h3>
+        <p>Acesso rápido aos materiais que você mais utiliza.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">📥</div>
+        <h3>Caixa de entrada</h3>
+        <p>Arquivos recém-enviados aguardando organização.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🤖</div>
+        <h3>IA</h3>
+        <p>Ferramentas para registros, planejamento e organização.</p>
+      </div>
+
+    </div>
+
+    <h2 class="section-title">Recentes</h2>
+
+    <div class="list">
+
+      <div class="item">
+        <div>
+          <strong>Atividade de Frações</strong>
+          <span>PDF • 6º ano • Frações</span>
+        </div>
+        <div class="badge">Arquivo</div>
+      </div>
+
+      <div class="item">
+        <div>
+          <strong>Registro de Condutas</strong>
+          <span>Aplicativo HTML • Privado</span>
+        </div>
+        <div class="badge">App</div>
+      </div>
+
+      <div class="item">
+        <div>
+          <strong>Banco Simulado EJA</strong>
+          <span>Aplicativo HTML • EJA</span>
+        </div>
+        <div class="badge">App</div>
+      </div>
+
+    </div>
+
+  </main>
+
+</div>
+
+</body>
+</html>
