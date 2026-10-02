@@ -140,12 +140,53 @@
 
   </div>
 
-  <script>
-    function entrar(event) {
-      event.preventDefault();
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+  const SUPABASE_URL = "COLE_AQUI_SUA_PROJECT_URL";
+  const SUPABASE_KEY = "COLE_AQUI_SUA_PUBLISHABLE_KEY";
+
+  const supabaseClient = supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+  async function entrar(event) {
+    event.preventDefault();
+
+    const email = document.getElementById("email").value.trim();
+    const senha = document.getElementById("senha").value;
+
+    const botao = event.target.querySelector("button");
+    botao.disabled = true;
+    botao.textContent = "Entrando...";
+
+    const { data, error } =
+      await supabaseClient.auth.signInWithPassword({
+        email: email,
+        password: senha
+      });
+
+    if (error) {
+      alert("Não foi possível entrar. Verifique o e-mail e a senha.");
+      botao.disabled = false;
+      botao.textContent = "Entrar";
+      return;
+    }
+
+    window.location.href = "/central.html";
+  }
+
+  async function verificarLogin() {
+    const { data } = await supabaseClient.auth.getSession();
+
+    if (data.session) {
       window.location.href = "/central.html";
     }
-  </script>
+  }
+
+  verificarLogin();
+</script>
 
 </body>
 </html>
