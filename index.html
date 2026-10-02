@@ -1,1 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cássio Ensina</title>
 
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #222;
+    }
+
+    header {
+      background: #1f4f8f;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 36px;
+    }
+
+    header p {
+      margin-top: 8px;
+      opacity: 0.9;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 14px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      text-decoration: none;
+      color: #222;
+      transition: 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+    }
+
+    .card h2 {
+      margin-top: 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #666;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Cássio Ensina</h1>
+    <p>Materiais, aplicativos e recursos educacionais</p>
+  </header>
+
+  <main>
+
+    <div class="grid">
+
+      <a href="#" class="card">
+        <h2>📚 Materiais</h2>
+        <p>Atividades, avaliações, PDFs e planilhas.</p>
+      </a>
+
+      <a href="#" class="card">
+        <h2>🎮 Aplicativos</h2>
+        <p>Ferramentas e aplicativos educacionais.</p>
+      </a>
+
+      <a href="#" class="card">
+        <h2>🧪 Projetos</h2>
+        <p>Feiras de ciências, projetos e experiências.</p>
+      </a>
+
+      <a href="#" class="card">
+        <h2>👨‍🏫 Sobre</h2>
+        <p>Conheça o professor Cássio e o projeto.</p>
+      </a>
+
+    </div>
+
+  </main>
+
+  <footer>
+    © 2026 Cássio Ensina
+  </footer>
+
+</body>
+</html>
