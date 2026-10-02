@@ -168,11 +168,13 @@
       });
 
     if (error) {
-      alert("Não foi possível entrar. Verifique o e-mail e a senha.");
-      botao.disabled = false;
-      botao.textContent = "Entrar";
-      return;
-    }
+  console.error(error);
+  alert("Erro: " + error.message);
+
+  botao.disabled = false;
+  botao.textContent = "Entrar";
+  return;
+}
 
     window.location.href = "/central.html";
   }
