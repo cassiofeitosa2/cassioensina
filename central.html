@@ -1,310 +1,480 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Central do Professor | Cássio Ensina</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Central do Professor | Cássio Ensina</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f7fb;
-      color: #1e293b;
-    }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #1e293b;
+    }
 
-    .layout {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 250px 1fr;
-    }
+    .layout {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 250px 1fr;
+    }
 
-    aside {
-      background: #10284d;
-      color: white;
-      padding: 28px 20px;
-    }
+    aside {
+      background: #10284d;
+      color: white;
+      padding: 28px 20px;
+    }
 
-    .logo {
-      font-size: 22px;
-      font-weight: 800;
-      margin-bottom: 35px;
-    }
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 35px;
+    }
 
-    .menu {
-      display: grid;
-      gap: 10px;
-    }
+    .menu {
+      display: grid;
+      gap: 10px;
+    }
 
-    .menu a {
-      color: #d9e5f7;
-      text-decoration: none;
-      padding: 12px 14px;
-      border-radius: 10px;
-      font-weight: 600;
-    }
+    .menu a,
+    .menu button {
+      color: #d9e5f7;
+      text-decoration: none;
+      padding: 12px 14px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 16px;
+      font-family: inherit;
+      text-align: left;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+    }
 
-    .menu a:hover {
-      background: rgba(255,255,255,.1);
-      color: white;
-    }
+    .menu a:hover,
+    .menu button:hover {
+      background: rgba(255,255,255,.1);
+      color: white;
+    }
 
-    main {
-      padding: 38px;
-    }
+    main {
+      padding: 38px;
+      min-width: 0;
+    }
 
-    .top {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      align-items: center;
-      margin-bottom: 32px;
-    }
+    .top {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      margin-bottom: 32px;
+    }
 
-    .top h1 {
-      font-size: 34px;
-    }
+    .top h1 {
+      font-size: 34px;
+    }
 
-    .top p {
-      color: #657086;
-      margin-top: 6px;
-    }
+    .top p {
+      color: #657086;
+      margin-top: 6px;
+      line-height: 1.5;
+    }
 
-    .search {
-      width: 330px;
-      max-width: 100%;
-      padding: 12px 14px;
-      border: 1px solid #dce2eb;
-      border-radius: 12px;
-      background: white;
-    }
+    .search {
+      width: 330px;
+      max-width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #dce2eb;
+      border-radius: 12px;
+      background: white;
+      font-size: 15px;
+    }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(210px,1fr));
-      gap: 18px;
-      margin-bottom: 34px;
-    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 18px;
+      margin-bottom: 34px;
+    }
 
-    .card {
-      background: white;
-      padding: 22px;
-      border-radius: 18px;
-      border: 1px solid #e2e8f0;
-      box-shadow: 0 8px 24px rgba(15,23,42,.05);
-    }
+    .card {
+      background: white;
+      padding: 22px;
+      border-radius: 18px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 8px 24px rgba(15,23,42,.05);
+    }
 
-    .card .icon {
-      font-size: 26px;
-      margin-bottom: 14px;
-    }
+    .card .icon {
+      font-size: 26px;
+      margin-bottom: 14px;
+    }
 
-    .card h3 {
-      margin-bottom: 8px;
-    }
+    .card h3 {
+      margin-bottom: 8px;
+    }
 
-    .card p {
-      color: #657086;
-      font-size: 14px;
-      line-height: 1.5;
-    }
+    .card p {
+      color: #657086;
+      font-size: 14px;
+      line-height: 1.5;
+    }
 
-    .section-title {
-      font-size: 22px;
-      margin: 30px 0 16px;
-    }
+    .section-title {
+      font-size: 22px;
+      margin: 30px 0 16px;
+    }
 
-    .list {
-      display: grid;
-      gap: 12px;
-    }
+    .list {
+      display: grid;
+      gap: 12px;
+    }
 
-    .item {
-      background: white;
-      border: 1px solid #e2e8f0;
-      border-radius: 14px;
-      padding: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
+    .item {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
 
-    .item strong {
-      display: block;
-      margin-bottom: 4px;
-    }
+    .item strong {
+      display: block;
+      margin-bottom: 4px;
+      overflow-wrap: anywhere;
+    }
 
-    .item span {
-      color: #7a8497;
-      font-size: 13px;
-    }
+    .item span {
+      color: #7a8497;
+      font-size: 13px;
+    }
 
-    .badge {
-      font-size: 12px;
-      padding: 7px 10px;
-      border-radius: 999px;
-      background: #eef5ff;
-      color: #2868bb;
-      font-weight: 700;
-    }
+    .badge {
+      font-size: 12px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: #eef5ff;
+      color: #2868bb;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
 
-    @media(max-width: 800px) {
-      .layout {
-        grid-template-columns: 1fr;
-      }
+    .status {
+      color: #657086;
+      padding: 16px 0;
+      line-height: 1.5;
+    }
 
-      aside {
-        display: none;
-      }
+    .mobile-actions {
+      display: none;
+    }
 
-      main {
-        padding: 24px;
-      }
+    @media (max-width: 800px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
 
-      .top {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+      aside {
+        display: none;
+      }
 
-      .search {
-        width: 100%;
-      }
-    }
-  </style>
+      main {
+        padding: 24px;
+      }
+
+      .top {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .top h1 {
+        font-size: 28px;
+      }
+
+      .search {
+        width: 100%;
+      }
+
+      .mobile-actions {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        margin-bottom: 24px;
+      }
+
+      .mobile-actions a,
+      .mobile-actions button {
+        font-family: inherit;
+        font-size: 14px;
+        color: #173b75;
+        font-weight: 700;
+        text-decoration: none;
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="layout">
+  <div class="layout">
 
-  <aside>
-    <div class="logo">Cássio Ensina</div>
+    <aside>
+      <div class="logo">Cássio Ensina</div>
 
-    <div class="menu">
-      <a href="#">🏠 Início</a>
-      <a href="#">📁 Arquivos</a>
-      <a href="#">🧰 Meus Apps</a>
-      <a href="#">⭐ Favoritos</a>
-      <a href="#">🕘 Recentes</a>
-      <a href="#">📥 Caixa de entrada</a>
-      <a href="#">🤖 Ferramentas com IA</a>
-      <a href="/">🌐 Site público</a>
-      <a href="#" onclick="sair()">🚪 Sair</a>
-    </div>
-  </aside>
+      <div class="menu">
+        <a href="#">🏠 Início</a>
+        <a href="#">📁 Arquivos</a>
+        <a href="#">🧰 Meus Apps</a>
+        <a href="#">⭐ Favoritos</a>
+        <a href="#recentes">🕘 Recentes</a>
+        <a href="#">📥 Caixa de entrada</a>
+        <a href="#">🤖 Ferramentas com IA</a>
+        <a href="/">🌐 Site público</a>
+        <button type="button" onclick="sair()">🚪 Sair</button>
+      </div>
+    </aside>
 
-  <main>
+    <main>
 
-    <div class="top">
-      <div>
-        <h1>Central do Professor</h1>
-        <p>Organize seus materiais, aplicativos e recursos em um só lugar.</p>
-      </div>
+      <div class="mobile-actions">
+        <a href="/">← Site público</a>
+        <button type="button" onclick="sair()">🚪 Sair</button>
+      </div>
 
-      <input class="search" type="text" placeholder="Pesquisar em tudo...">
-    </div>
+      <div class="top">
+        <div>
+          <h1>Central do Professor</h1>
+          <p>Organize seus materiais, aplicativos e recursos em um só lugar.</p>
+        </div>
 
-    <div class="grid">
+        <input
+          class="search"
+          id="pesquisa"
+          type="search"
+          placeholder="Pesquisar nos materiais recentes..."
+          aria-label="Pesquisar nos materiais recentes"
+        >
+      </div>
 
-      <div class="card">
-        <div class="icon">📁</div>
-        <h3>Arquivos</h3>
-        <p>PDFs, planilhas, documentos, imagens e outros materiais.</p>
-      </div>
+      <div class="grid">
 
-      <div class="card">
-        <div class="icon">🧰</div>
-        <h3>Meus Apps</h3>
-        <p>Aplicativos HTML públicos e privados.</p>
-      </div>
+        <div class="card">
+          <div class="icon">📁</div>
+          <h3>Arquivos</h3>
+          <p>PDFs, planilhas, documentos, imagens e outros materiais.</p>
+        </div>
 
-      <div class="card">
-        <div class="icon">⭐</div>
-        <h3>Favoritos</h3>
-        <p>Acesso rápido aos materiais que você mais utiliza.</p>
-      </div>
+        <div class="card">
+          <div class="icon">🧰</div>
+          <h3>Meus Apps</h3>
+          <p>Aplicativos HTML públicos e privados.</p>
+        </div>
 
-      <div class="card">
-        <div class="icon">📥</div>
-        <h3>Caixa de entrada</h3>
-        <p>Arquivos recém-enviados aguardando organização.</p>
-      </div>
+        <div class="card">
+          <div class="icon">⭐</div>
+          <h3>Favoritos</h3>
+          <p>Acesso rápido aos materiais que você mais utiliza.</p>
+        </div>
 
-      <div class="card">
-        <div class="icon">🤖</div>
-        <h3>IA</h3>
-        <p>Ferramentas para registros, planejamento e organização.</p>
-      </div>
+        <div class="card">
+          <div class="icon">📥</div>
+          <h3>Caixa de entrada</h3>
+          <p>Arquivos recém-enviados aguardando organização.</p>
+        </div>
 
-    </div>
+        <div class="card">
+          <div class="icon">🤖</div>
+          <h3>IA</h3>
+          <p>Ferramentas para registros, planejamento e organização.</p>
+        </div>
 
-    <h2 class="section-title">Recentes</h2>
+      </div>
 
-    <div class="list">
+      <h2 class="section-title" id="recentes">Recentes</h2>
 
-      <div class="item">
-        <div>
-          <strong>Atividade de Frações</strong>
-          <span>PDF • 6º ano • Frações</span>
-        </div>
-        <div class="badge">Arquivo</div>
-      </div>
+      <div class="list" id="lista-materiais" aria-live="polite">
+        <p class="status">Verificando seu acesso...</p>
+      </div>
 
-      <div class="item">
-        <div>
-          <strong>Registro de Condutas</strong>
-          <span>Aplicativo HTML • Privado</span>
-        </div>
-        <div class="badge">App</div>
-      </div>
+    </main>
 
-      <div class="item">
-        <div>
-          <strong>Banco Simulado EJA</strong>
-          <span>Aplicativo HTML • EJA</span>
-        </div>
-        <div class="badge">App</div>
-      </div>
+  </div>
 
-    </div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-  </main>
+  <script>
+    const SUPABASE_URL = "https://veyygrhnqiexwadxrexq.supabase.co";
+    const SUPABASE_KEY = "sb_publishable_8f8pndhzNkBRbP2wVGPt6g_rXAJcdGz";
+    const PROFESSOR_ID = "9d74fb33-390e-4fd2-8b6a-0f0a14a7672e";
 
-</div>
+    let supabaseClient;
+    let materiaisCarregados = [];
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    const lista = document.getElementById("lista-materiais");
+    const pesquisa = document.getElementById("pesquisa");
 
-<script>
-  const SUPABASE_URL = "https://veyygrhnqiexwadxrexq.supabase.co";
-  const SUPABASE_KEY = "sb_publishable_8f8pndhzNkBRbP2wVGPt6g_rXAJcdGz";
+    function mostrarMensagem(texto) {
+      const mensagem = document.createElement("p");
+      mensagem.className = "status";
+      mensagem.textContent = texto;
+      lista.replaceChildren(mensagem);
+    }
 
-  const supabaseClient = supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-  );
+    function normalizar(texto) {
+      return String(texto || "")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase();
+    }
 
-  async function protegerPagina() {
-    const { data, error } = await supabaseClient.auth.getSession();
+    function exibirMateriais() {
+      const termo = normalizar(pesquisa.value.trim());
 
-    if (error || !data.session) {
-      window.location.href = "/login.html";
-      return;
-    }
-  }
+      const materiais = materiaisCarregados.filter((material) => {
+        const texto = [
+          material.titulo,
+          material.tipo,
+          material.turma,
+          material.conteudo
+        ].join(" ");
 
-  async function sair() {
-    await supabaseClient.auth.signOut();
-    window.location.href = "/login.html";
-  }
+        return normalizar(texto).includes(termo);
+      });
 
-  protegerPagina();
-</script>
+      lista.replaceChildren();
+
+      if (materiais.length === 0) {
+        mostrarMensagem(
+          termo
+            ? "Nenhum material encontrado para essa pesquisa."
+            : "Você ainda não cadastrou materiais."
+        );
+        return;
+      }
+
+      materiais.forEach((material) => {
+        const item = document.createElement("div");
+        item.className = "item";
+
+        const detalhes = document.createElement("div");
+
+        const titulo = document.createElement("strong");
+        titulo.textContent = material.titulo;
+
+        const resumo = document.createElement("span");
+        resumo.textContent = [
+          material.tipo ? material.tipo.toUpperCase() : "",
+          material.turma,
+          material.conteudo
+        ].filter(Boolean).join(" • ");
+
+        const badge = document.createElement("div");
+        badge.className = "badge";
+        badge.textContent = material.publico ? "Público" : "Privado";
+
+        detalhes.append(titulo, resumo);
+        item.append(detalhes, badge);
+        lista.append(item);
+      });
+    }
+
+    async function carregarMateriais() {
+      mostrarMensagem("Carregando materiais...");
+
+      const { data, error } = await supabaseClient
+        .from("materiais")
+        .select("id, titulo, tipo, turma, conteudo, publico")
+        .eq("proprietario_id", PROFESSOR_ID)
+        .order("criado_em", { ascending: false })
+        .limit(20);
+
+      if (error) {
+        console.error("Erro ao carregar materiais:", error);
+        mostrarMensagem(
+          "Não foi possível carregar os materiais. Atualize a página para tentar novamente."
+        );
+        return;
+      }
+
+      materiaisCarregados = data || [];
+      exibirMateriais();
+    }
+
+    async function protegerPagina() {
+      try {
+        if (!window.supabase) {
+          throw new Error("Não foi possível carregar o Supabase.");
+        }
+
+        supabaseClient = window.supabase.createClient(
+          SUPABASE_URL,
+          SUPABASE_KEY
+        );
+
+        const { data, error } = await supabaseClient.auth.getSession();
+
+        if (error || !data.session) {
+          window.location.replace("/login.html");
+          return;
+        }
+
+        if (data.session.user.id !== PROFESSOR_ID) {
+          mostrarMensagem("Esta conta não tem acesso à Central do Professor.");
+          return;
+        }
+
+        supabaseClient.auth.onAuthStateChange((evento) => {
+          if (evento === "SIGNED_OUT") {
+            materiaisCarregados = [];
+            mostrarMensagem("Sessão encerrada.");
+            window.location.replace("/login.html");
+          }
+        });
+
+        await carregarMateriais();
+      } catch (erro) {
+        console.error("Erro ao abrir a Central:", erro);
+        mostrarMensagem(
+          "Não foi possível abrir a Central. Atualize a página para tentar novamente."
+        );
+      }
+    }
+
+    async function sair() {
+      if (!supabaseClient) {
+        window.location.replace("/login.html");
+        return;
+      }
+
+      try {
+        const { error } = await supabaseClient.auth.signOut();
+
+        if (error) {
+          throw error;
+        }
+
+        window.location.replace("/login.html");
+      } catch (erro) {
+        console.error("Erro ao sair:", erro);
+        alert("Não foi possível sair. Tente novamente.");
+      }
+    }
+
+    pesquisa.addEventListener("input", exibirMateriais);
+
+    protegerPagina();
+  </script>
 
 </body>
 </html>
