@@ -277,5 +277,33 @@
 
 </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+  const SUPABASE_URL = "https://veyygrhnqiexwadxrexq.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_8f8pndhzNkBRbP2wVGPt6g_rXAJcdGz";
+
+  const supabaseClient = supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+  async function protegerPagina() {
+    const { data, error } = await supabaseClient.auth.getSession();
+
+    if (error || !data.session) {
+      window.location.href = "/login.html";
+      return;
+    }
+  }
+
+  async function sair() {
+    await supabaseClient.auth.signOut();
+    window.location.href = "/login.html";
+  }
+
+  protegerPagina();
+</script>
+
 </body>
 </html>
